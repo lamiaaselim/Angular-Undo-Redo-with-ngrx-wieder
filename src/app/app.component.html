@@ -1,42 +1,48 @@
 <header>
   <div class="header-content">
     <div class="container">
-      <div class="row">
-        <h5 class="text-center my-5">Angular Undo and Redo App</h5>
+      <div class="row d-flex align-items-center">
+        <div class="col-md-6">
+          <h5 class="text-center my-5">Angular Undo and Redo App</h5>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-primary me-2"
+              title="undo"
+              (click)="undo()"
+              [disabled]="disableUndo$ | async"
+            >
+              &#11148;
+            </button>
+            <button
+              class="btn btn-primary flip"
+              title="redo"
+              [disabled]="disableRedo$ | async"
+              (click)="redo()"
+            >
+              &#11148;
+            </button>
+          </div>
+        </div>
       </div>
       <div class="row">
-        <div class="col-md-8 offset-md-2">
-          <div class="row py-4">
-            <div class="col-md-6">
-              <label for="activeDrop">Active List</label>
-              <select
-                name="activeDrop"
-                id="activeDrop"
-                (change)="selectList($event)"
-              >
-                <option
-                  *ngFor="let list of lists$ | async"
-                  [value]="list.id"
-                  [selected]="(activeList$ | async) == list"
-                >
-                  {{ list.name }}
-                </option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <div class="d-flex">
-                <button title="undo" (click)="undo()" [disabled]="disableUndo$ | async">&#11148;</button>
-                <button
-                  class="flip"
-                  title="redo"
-                  [disabled]="disableRedo$ | async"
-                  (click)="redo()"
-                >
-                  &#11148;
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-8 offset-md-2 d-flex flex-column">
+            <label class="form-label" for="activeDrop"> Active List </label>
+          <select
+            class="form-select"
+            name="activeDrop"
+            id="activeDrop"
+            (change)="selectList($event)"
+          >
+            <option
+              *ngFor="let list of lists$ | async"
+              [value]="list.id"
+              [selected]="(activeList$ | async) == list"
+            >
+              {{ list.name }}
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -47,8 +53,14 @@
     <div class="row py-3">
       <div class="col-md-8 offset-md-2">
         <div class="d-flex justify-content-evenly">
-          <input #in type="text" tab-index="1" placeholder="What's todo?" />
-          <button (click)="add(in.value)">Add</button>
+          <input
+            class="form-control me-3"
+            #in
+            type="text"
+            tab-index="1"
+            placeholder="What's todo?"
+          />
+          <button class="btn btn-success p-2" (click)="add(in.value)">Add</button>
         </div>
       </div>
     </div>
@@ -91,20 +103,20 @@
     </div>
   </div>
 
-
-
   <div class="container py-3">
     <div class="row py-3">
       <small
-      >Updates state while dragging, yet undo/redo will step based on where handle
-      was dropped/picked up</small
-    >
+        >Updates state while dragging, yet undo/redo will step based on where
+        handle was dropped/picked up</small
+      >
     </div>
     <div class="row py-3">
       <div class="col-md-8 offset-md-2">
         <div class="d-flex justify-content-evenly">
-          <input [value]="username$ | async" #username />
-          <button (click)="updateUsername(username.value)">Update</button>
+          <input class="form-control me-2" [value]="username$ | async" #username />
+          <button class="btn btn-info" (click)="updateUsername(username.value)">
+            Update
+          </button>
         </div>
       </div>
     </div>

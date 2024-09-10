@@ -1,8 +1,4 @@
-:host {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+
 
 main {
   padding-top: 24px;
@@ -14,14 +10,6 @@ header {
   margin: 0;
 }
 
-.header-content {
-  max-width: 768px;
-  margin: 0 auto;
-}
-
-button {
-  margin-left: 6px;
-}
 
 .row {
   display: flex;

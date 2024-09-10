@@ -8,6 +8,8 @@ import { metaReducers, reducers } from './store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { environment } from '../environments/environment';  // <-- To check if it's dev mode
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictStateSerializability: true,

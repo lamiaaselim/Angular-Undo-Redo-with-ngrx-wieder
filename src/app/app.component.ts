@@ -13,6 +13,8 @@ import * as fromUser from './store/user/user.selector';
 import { State } from './store';
 import { Todo } from './store/todo/todo';
 import { updateUser } from './store/user/user.action';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-root',
@@ -29,7 +31,7 @@ export class AppComponent {
   readonly disableRedo$: any;
   readonly username$;
 
-  constructor(private readonly store: Store<State>) {
+  constructor(private toastr: ToastrService, private readonly store: Store<State>) {
     this.lists$ = this.store
       .select((state) => state.todo.lists)
       .pipe(map((lists) => Object.values(lists)));
@@ -87,10 +89,12 @@ export class AppComponent {
 
   undo(): void {
     this.store.dispatch({ type: 'UNDO' });
+    this.toastr.success('Undo action performed');
   }
 
   redo(): void {
     this.store.dispatch({ type: 'REDO' });
+    this.toastr.success('Redo action performed');
   }
 
   // selectList(id: string): void {
