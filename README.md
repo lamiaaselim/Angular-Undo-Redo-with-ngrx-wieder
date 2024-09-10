@@ -28,21 +28,21 @@ Before you begin, ensure you have met the following requirements:
 
 1. **Clone the repository**:
 
-    ```bash
-    git clone https://github.com/lamiaaselim/Angular-Undo-Redo-with-ngrx-wieder
-    ```
+   ```bash
+   git clone https://github.com/lamiaaselim/Angular-Undo-Redo-with-ngrx-wieder
+   ```
 
 2. **Navigate to the project directory**:
 
-    ```bash
-    cd undo-redo-todo-app
-    ```
+   ```bash
+   cd undo-redo-todo-app
+   ```
 
 3. **Install dependencies**:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ## Running the Application
 
@@ -50,34 +50,34 @@ To run the application locally:
 
 1. **Start the development server**:
 
-    ```bash
-    ng serve
-    ```
+   ```bash
+   ng serve
+   ```
 
 2. Open your browser and navigate to:
 
-    ```bash
-    http://localhost:4200
-    ```
+   ```bash
+   http://localhost:4200
+   ```
 
 The app will automatically reload if you change any of the source files.
 
 ## Project Structure
-src/
-├── app/
-│   ├── store/
-│   │   ├── todo/
-│   │   │   ├── todo.actions.ts   # Todo actions (add, toggle, remove)
-│   │   │   ├── todo.reducer.ts   # Todo reducers
-│   │   │   ├── todo.selector.ts  # Todo selectors
-│   │   └── user/
-│   │       ├── user.action.ts    # User actions (update)
-│   │       ├── user.reducer.ts   # User reducer
-│   │       └── user.selector.ts  # User selectors
-│   ├── app.component.ts          # Main component
-│   ├── app.component.html        # Main component template
-│   └── app.component.scss        # Main component styles
 
+          src/
+          ├── app/
+          │   ├── store/
+          │   │   ├── todo/
+          │   │   │   ├── todo.actions.ts   # Todo actions (add, toggle, remove)
+          │   │   │   ├── todo.reducer.ts   # Todo reducers
+          │   │   │   ├── todo.selector.ts  # Todo selectors
+          │   │   └── user/
+          │   │       ├── user.action.ts    # User actions (update)
+          │   │       ├── user.reducer.ts   # User reducer
+          │   │       └── user.selector.ts  # User selectors
+          │   ├── app.component.ts          # Main component
+          │   ├── app.component.html        # Main component template
+          │   └── app.component.scss        # Main component styles
 
 ## State Management (NgRx)
 
@@ -102,9 +102,9 @@ To run unit tests:
 
 1. **Run the tests**:
 
-    ```bash
-    ng test
-    ```
+   ```bash
+   ng test
+   ```
 
 This command will run all unit tests using the Karma test runner.
 
@@ -119,8 +119,5 @@ This project uses `ngrx-wieder` to implement undo/redo functionality:
 
 - **Undo**: Undo the last action (e.g., adding, toggling, or removing a todo).
 - **Redo**: Redo an action that was undone.
-  
+
 Undo/redo actions are handled with `ngrx-wieder`, which automatically tracks state changes in the store and allows time-traveling through the state.
-
-
-
