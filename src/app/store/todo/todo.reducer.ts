@@ -16,7 +16,8 @@ const { createSegmentedUndoRedoReducer } = undoRedo({
     addTodo.type,
     toggleTodo.type,
     removeTodo.type,
-    changeMood.type
+    changeMood.type,
+    selectList.type
   ],
   mergeActionTypes: [changeMood.type]
 });

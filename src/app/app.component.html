@@ -10,7 +10,7 @@
       <button
         class="flip"
         title="redo"
-
+        [disabled]="disableRedo$ | async"
         (click)="redo()"
       >
         &#11148;

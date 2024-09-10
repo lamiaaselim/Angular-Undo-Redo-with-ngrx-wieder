@@ -25,8 +25,8 @@ export class AppComponent {
   readonly activeList$;
   readonly mood$;
   readonly todos$;
-  // readonly disableUndo$;
-  // readonly disableRedo$;
+  readonly disableUndo$: any;
+  readonly disableRedo$: any;
   readonly username$;
 
   constructor(private readonly store: Store<State>) {
@@ -44,19 +44,19 @@ export class AppComponent {
       .select(fromTodo.selectActiveList)
       .pipe(select(list => list.todos));
 
-    // this.disableUndo$ = this.store
-    //   .select(fromTodo.selectCanUndo)
-    //   .pipe(map((canUndo) => {
-    //     console.log('Can Undo:', canUndo);
-    //     return !canUndo;
-    //   }));
+      this.disableUndo$ = this.store
+      .select(fromTodo.selectCanUndo(undefined)) // Specify the history key here
+      .pipe(map((canUndo) => {
+        console.log('Can Undo:', canUndo);
+        return !canUndo;
+      }));
 
-    // this.disableRedo$ = this.store
-    //   .select(fromTodo.selectCanRedo)
-    //   .pipe(map((canRedo) => {
-    //     console.log('Can Redo:', canRedo);
-    //     return !canRedo;
-    //   }));
+    this.disableRedo$ = this.store
+      .select(fromTodo.selectCanRedo())
+      .pipe(map((canRedo) => {
+        console.log('Can Redo:', canRedo);
+        return !canRedo;
+      }));
 
     this.username$ = this.store
       .select(fromUser.selectUsername)
