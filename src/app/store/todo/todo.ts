@@ -1,7 +1,7 @@
-export const nextId = () => Math.random().toString(36).substr(2, 9)
+export const nextId = () => Math.random().toString(36).substr(2, 9);
 
 export interface Todo {
-  id: string,
-  text: string,
-  checked: boolean
+  id: string;
+  text: string;
+  checked: boolean;
 }

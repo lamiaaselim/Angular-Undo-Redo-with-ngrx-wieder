@@ -1,16 +1,11 @@
 import {
   Action,
-  ActionReducerMap,
-  combineReducers,
   MetaReducer,
 } from "@ngrx/store";
-import { UndoRedoState } from "ngrx-wieder";
 import { TodoSate } from "./todo/todo.state";
-import { Actions } from "./todo/todo.actions";
 import * as fromTodo from "./todo/todo.reducer";
 import * as fromUser from "./user/user.reducer";
 import { UserSate } from "./user/user.state";
-import { InjectionToken } from "@angular/core";
 
 export interface State {
   todo: TodoSate;

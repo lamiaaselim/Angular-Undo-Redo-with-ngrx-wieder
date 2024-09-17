@@ -18,9 +18,9 @@ export const listOne = {
   name: 'Personal',
   todos: [
     { id: nextId(), text: 'Travel', checked: true },
-    { id: nextId(), text: 'Relax', checked: false }
+    { id: nextId(), text: 'Relax', checked: false },
   ],
-  mood: 70
+  mood: 70,
 };
 
 export const listTwo = {
@@ -29,16 +29,16 @@ export const listTwo = {
   todos: [
     { id: nextId(), text: 'Finish Project A', checked: true },
     { id: nextId(), text: 'Write proposal', checked: false },
-    { id: nextId(), text: 'Design dashboard', checked: false }
+    { id: nextId(), text: 'Design dashboard', checked: false },
   ],
-  mood: 70
+  mood: 70,
 };
 
 export const initial: TodoSate = {
   lists: {
     [listOne.id]: listOne,
-    [listTwo.id]: listTwo
+    [listTwo.id]: listTwo,
   },
   activeList: listOne.id,
-  ...initialUndoRedoState
+  ...initialUndoRedoState,
 };

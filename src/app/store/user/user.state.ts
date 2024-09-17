@@ -5,6 +5,6 @@ export interface UserSate extends UndoRedoState {
 }
 
 export const initial: UserSate = {
-  name: 'Jean',
+  name: 'Lamiaa',
   ...initialUndoRedoState
 };

@@ -1,11 +1,7 @@
-import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Store, StoreModule } from '@ngrx/store';
-import { of } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import * as fromTodo from './store/todo/todo.selector';
-import * as fromUser from './store/user/user.selector';
 import { addTodo, selectList, toggleTodo, removeTodo } from './store/todo/todo.actions';
 import { updateUser } from './store/user/user.action';
 import { FormsModule } from '@angular/forms';
