@@ -5,6 +5,7 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { addTodo, selectList, toggleTodo, removeTodo } from './store/todo/todo.actions';
 import { updateUser } from './store/user/user.action';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -24,11 +25,19 @@ describe('AppComponent', () => {
     },
   };
 
+  class MockToastrService {
+    success(message: string, title?: string) {}
+    error(message: string, title?: string) {}
+    info(message: string, title?: string) {}
+    warning(message: string, title?: string) {}
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [FormsModule], // Import FormsModule if needed
       providers: [
+        { provide: ToastrService, useClass: MockToastrService }, 
         provideMockStore({ initialState }),
       ],
     }).compileComponents();
@@ -36,7 +45,7 @@ describe('AppComponent', () => {
     store = TestBed.inject(Store) as MockStore;
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // detect any changes to the fixture instance
+    fixture.detectChanges(); // detect any changes to the fixture
   });
 
   it('should create the app', () => {
