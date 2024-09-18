@@ -14,7 +14,7 @@ import { State } from './store';
 import { Todo } from './store/todo/todo';
 import { updateUser } from './store/user/user.action';
 import { ToastrService } from 'ngx-toastr';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -27,11 +27,14 @@ export class AppComponent {
   readonly activeList$;
   readonly mood$;
   readonly todos$;
-  readonly disableUndo$: any;
-  readonly disableRedo$: any;
+  readonly disableUndo$: Observable<boolean>;
+  readonly disableRedo$: Observable<boolean>;
   readonly username$;
 
-  constructor(private toastr: ToastrService, private readonly store: Store<State>) {
+  constructor(
+    private toastr: ToastrService,
+    private readonly store: Store<State>
+  ) {
     this.lists$ = this.store
       .select((state) => state.todo.lists)
       .pipe(map((lists) => Object.values(lists)));
@@ -46,14 +49,12 @@ export class AppComponent {
       .select(fromTodo.selectActiveList)
       .pipe(select((list) => list.todos));
 
-    this.disableUndo$ = this.store
-      .select(fromTodo.selectCanUndo(undefined)) // Specify the history key here
-      .pipe(
-        map((canUndo) => {
-          console.log('Can Undo:', canUndo);
-          return !canUndo;
-        })
-      );
+    this.disableUndo$ = this.store.select(fromTodo.selectCanUndo()).pipe(
+      map((canUndo) => {
+        console.log('Can Undo:', canUndo);
+        return !canUndo;
+      })
+    );
 
     this.disableRedo$ = this.store.select(fromTodo.selectCanRedo()).pipe(
       map((canRedo) => {
@@ -94,7 +95,7 @@ export class AppComponent {
 
   redo(): void {
     this.store.dispatch({ type: 'REDO' });
-    this.toastr.success('Redo action performed');
+    this.toastr.warning('Redo action performed');
   }
 
   // selectList(id: string): void {

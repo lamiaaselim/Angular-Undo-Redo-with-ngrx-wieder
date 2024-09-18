@@ -36,7 +36,7 @@ describe('AppComponent', () => {
     store = TestBed.inject(Store) as MockStore;
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // Initialize the component
+    fixture.detectChanges(); // detect any changes to the fixture instance
   });
 
   it('should create the app', () => {
